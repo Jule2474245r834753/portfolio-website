@@ -1,0 +1,480 @@
+# Talent Shop Portfolio Website (Für Anfänger)
+
+## Was du bekommst
+
+Du bekommst eine komplette kleine Portfolio-Website im Stil eines modernen Online-Shops.
+
+Deine Skills und Ausbildungsstationen werden wie Produkte dargestellt.
+
+Die Website enthält:
+
+* große Überschrift „Shop for New Talent“
+* Skill-/Produktkarten
+* About-Me Bereich
+* modernes Design
+* responsive Layout für Handy und Desktop
+
+---
+
+# Schritt-für-Schritt Anleitung
+
+## Option 1 (am einfachsten): GitHub Pages (komplett kostenlos)
+
+### Schritt 1: GitHub Account erstellen
+
+Gehe auf:
+
+[https://github.com](https://github.com)
+
+und erstelle einen kostenlosen Account.
+
+---
+
+### Schritt 2: Neues Repository erstellen
+
+1. Klicke oben rechts auf das „+“
+2. „New repository“
+3. Name eingeben:
+
+```text
+portfolio-website
+```
+
+4. „Public“ auswählen
+5. „Create repository“ klicken
+
+---
+
+### Schritt 3: Datei erstellen
+
+1. Im Repository auf:
+
+```text
+Add file → Create new file
+```
+
+2. Dateiname:
+
+```text
+index.html
+```
+
+3. Den kompletten Code unten hineinkopieren
+
+4. Ganz unten:
+
+```text
+Commit changes
+```
+
+---
+
+### Schritt 4: Website aktivieren
+
+1. Repository öffnen
+2. „Settings“
+3. Links „Pages“
+4. Unter „Branch“:
+
+```text
+main
+```
+
+wählen
+
+5. Save klicken
+
+Dann bekommst du einen Link wie:
+
+```text
+https://deinname.github.io/portfolio-website
+```
+
+Das ist deine Website.
+
+---
+
+# WEBSITE CODE
+
+Kopiere ALLES ab hier:
+
+```html
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shop for New Talent</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f7f7f5;
+      color: #111;
+      line-height: 1.6;
+    }
+
+    header {
+      min-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .tag {
+      background: black;
+      color: white;
+      padding: 0.4rem 1rem;
+      border-radius: 999px;
+      margin-bottom: 1.5rem;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+    }
+
+    h1 {
+      font-size: 4rem;
+      max-width: 900px;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+    }
+
+    .subtitle {
+      max-width: 600px;
+      color: #555;
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+    }
+
+    .hero-button {
+      background: black;
+      color: white;
+      padding: 1rem 2rem;
+      border-radius: 999px;
+      text-decoration: none;
+      transition: 0.3s;
+      font-weight: 600;
+    }
+
+    .hero-button:hover {
+      opacity: 0.8;
+    }
+
+    .products {
+      padding: 5rem 8%;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    .card {
+      background: white;
+      border-radius: 24px;
+      overflow: hidden;
+      transition: 0.3s;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+    }
+
+    .card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 1.5rem;
+    }
+
+    .card h3 {
+      margin-bottom: 0.7rem;
+      font-size: 1.3rem;
+    }
+
+    .card p {
+      color: #666;
+      margin-bottom: 1rem;
+    }
+
+    .skill-tag {
+      display: inline-block;
+      background: #f1f1f1;
+      padding: 0.4rem 0.8rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      margin-bottom: 1rem;
+    }
+
+    .card-button {
+      display: inline-block;
+      text-decoration: none;
+      color: white;
+      background: black;
+      padding: 0.8rem 1.2rem;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      transition: 0.3s;
+    }
+
+    .card-button:hover {
+      opacity: 0.8;
+    }
+
+    .about {
+      padding: 6rem 8%;
+      background: white;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .about img {
+      width: 100%;
+      border-radius: 24px;
+      object-fit: cover;
+    }
+
+    .about h2 {
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .about p {
+      color: #555;
+      margin-bottom: 1rem;
+      font-size: 1.05rem;
+    }
+
+    footer {
+      padding: 3rem;
+      text-align: center;
+      color: #777;
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2.8rem;
+      }
+
+      .about {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="tag">NOW HIRING</div>
+
+    <h1>Shop for New Talent</h1>
+
+    <p class="subtitle">
+      Explore creative skills, hands-on experience and modern digital thinking — all in one place.
+    </p>
+
+    <a href="#skills" class="hero-button">Browse Skills</a>
+  </header>
+
+  <section class="products" id="skills">
+    <h2 class="section-title">Featured Skills</h2>
+
+    <div class="grid">
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1492724441997-5dc865305da7?q=80&w=1200&auto=format&fit=crop" alt="Content Creation">
+
+        <div class="card-content">
+          <div class="skill-tag">Best Seller</div>
+
+          <h3>Content Creation</h3>
+
+          <p>
+            Creative storytelling, short-form content and engaging digital communication.
+          </p>
+
+          <a href="#" class="card-button">View Details</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1558655146-9f40138edfeb?q=80&w=1200&auto=format&fit=crop" alt="Design">
+
+        <div class="card-content">
+          <div class="skill-tag">In Demand</div>
+
+          <h3>Design & Branding</h3>
+
+          <p>
+            Creating modern visuals, social media assets and clean digital aesthetics.
+          </p>
+
+          <a href="#" class="card-button">View Details</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200&auto=format&fit=crop" alt="Social Media">
+
+        <div class="card-content">
+          <div class="skill-tag">Trending</div>
+
+          <h3>Social Media</h3>
+
+          <p>
+            Strategy, platform understanding and audience-focused communication.
+          </p>
+
+          <a href="#" class="card-button">View Details</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200&auto=format&fit=crop" alt="Teamwork">
+
+        <div class="card-content">
+          <div class="skill-tag">Top Rated</div>
+
+          <h3>Team Collaboration</h3>
+
+          <p>
+            Open communication, creative teamwork and organized project workflows.
+          </p>
+
+          <a href="#" class="card-button">View Details</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="about">
+
+    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1200&auto=format&fit=crop" alt="About Me">
+
+    <div>
+      <h2>Behind the Shop</h2>
+
+      <p>
+        Hi, I'm [DEIN NAME]. I enjoy combining creativity, communication and digital ideas to create meaningful experiences.
+      </p>
+
+      <p>
+        Through different educational and practical experiences, I developed skills in content creation, branding, teamwork and digital communication.
+      </p>
+
+      <p>
+        I'm currently looking for opportunities where I can grow, contribute and bring fresh ideas into modern teams.
+      </p>
+
+      <a href="#" class="hero-button">Download CV</a>
+    </div>
+
+  </section>
+
+  <footer>
+    © 2026 Your Name — Shop for New Talent
+  </footer>
+
+</body>
+</html>
+```
+
+---
+
+# Dinge die du später ändern kannst
+
+## Deinen Namen einfügen
+
+Suche im Code nach:
+
+```text
+[DEIN NAME]
+```
+
+und ersetze es.
+
+---
+
+## Eigene Bilder nutzen
+
+Du kannst später deine eigenen Bilder verwenden.
+
+Sehr einfach:
+
+1. Bilder bei:
+
+[https://imgur.com](https://imgur.com)
+
+hochladen
+
+2. Bildlink kopieren
+3. Im Code den alten Link ersetzen
+
+---
+
+## Skills ändern
+
+Zum Beispiel:
+
+* Video Editing
+* Marketing
+* UI/UX
+* Photography
+* Coding
+* Event Management
+* Customer Support
+
+Einfach die Texte in den Karten austauschen.
+
+---
+
+# Extra Tipp
+
+Die Website wirkt noch professioneller wenn du:
+
+* LinkedIn verlinkst
+* GitHub verlinkst
+* einen Lebenslauf als PDF hochlädst
+* echte Projektbilder nutzt
+
+---
+
+# Falls du möchtest
+
+Ich kann dir als Nächstes auch helfen mit:
+
+* eigenem Farbstil
+* Dark Mode
+* Animationen
+* echter Shop-Optik
+* eigenen Icons
+* deutscher Version
+* CV Download
+* Kontaktformular
+* Mobile Optimierung
+* eigener Domain
