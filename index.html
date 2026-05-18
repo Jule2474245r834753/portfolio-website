@@ -1,305 +1,392 @@
-```html
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Shop for New Talent</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<title>Shop for New Talent</title>
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    body {
-      font-family: 'Inter', sans-serif;
-      background: #f7f7f5;
-      color: #111;
-      line-height: 1.6;
-    }
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    header {
-      min-height: 80vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 2rem;
-    }
+<style>
 
-    .tag {
-      background: black;
-      color: white;
-      padding: 0.4rem 1rem;
-      border-radius: 999px;
-      margin-bottom: 1.5rem;
-      font-size: 0.9rem;
-      letter-spacing: 1px;
-    }
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
 
-    h1 {
-      font-size: 4rem;
-      max-width: 900px;
-      line-height: 1.1;
-      margin-bottom: 1.5rem;
-    }
+body{
+font-family:'Inter',sans-serif;
+background:#f7f7f5;
+color:#111;
+line-height:1.6;
+}
 
-    .subtitle {
-      max-width: 600px;
-      color: #555;
-      font-size: 1.2rem;
-      margin-bottom: 2rem;
-    }
 
-    .hero-button {
-      background: black;
-      color: white;
-      padding: 1rem 2rem;
-      border-radius: 999px;
-      text-decoration: none;
-      transition: 0.3s;
-      font-weight: 600;
-    }
+/* HEADER */
 
-    .hero-button:hover {
-      opacity: 0.8;
-    }
+.hero{
+position:relative;
+height:100vh;
+overflow:hidden;
 
-    .products {
-      padding: 5rem 8%;
-    }
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+}
 
-    .section-title {
-      font-size: 2.5rem;
-      margin-bottom: 3rem;
-    }
+.hero-banner{
+position:absolute;
+width:100%;
+height:100%;
+object-fit:cover;
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-    }
+/* zeigt eher den oberen Bildteil */
+object-position:center top;
+}
 
-    .card {
-      background: white;
-      border-radius: 24px;
-      overflow: hidden;
-      transition: 0.3s;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-    }
+.hero::before{
+content:"";
+position:absolute;
+inset:0;
 
-    .card:hover {
-      transform: translateY(-6px);
-    }
+background:rgba(0,0,0,0.35);
 
-    .card img {
-      width: 100%;
-      height: 220px;
-      object-fit: cover;
-    }
+z-index:1;
+}
 
-    .card-content {
-      padding: 1.5rem;
-    }
+.hero-overlay{
+position:relative;
+z-index:2;
+padding:2rem;
+color:white;
+}
 
-    .card h3 {
-      margin-bottom: 0.7rem;
-      font-size: 1.3rem;
-    }
+.tag{
+display:inline-block;
+background:black;
+color:white;
+padding:0.4rem 1rem;
+border-radius:999px;
+margin-bottom:1.5rem;
+font-size:0.9rem;
+letter-spacing:1px;
+}
 
-    .card p {
-      color: #666;
-      margin-bottom: 1rem;
-    }
+.hero h1{
+font-size:4.5rem;
+line-height:1.1;
+margin-bottom:1rem;
+}
 
-    .skill-tag {
-      display: inline-block;
-      background: #f1f1f1;
-      padding: 0.4rem 0.8rem;
-      border-radius: 999px;
-      font-size: 0.85rem;
-      margin-bottom: 1rem;
-    }
+.subtitle{
+font-size:1.2rem;
+max-width:650px;
+margin:auto;
+margin-bottom:2rem;
+color:white;
+}
 
-    .card-button {
-      display: inline-block;
-      text-decoration: none;
-      color: white;
-      background: black;
-      padding: 0.8rem 1.2rem;
-      border-radius: 999px;
-      font-size: 0.9rem;
-      transition: 0.3s;
-    }
+.hero-button{
+background:white;
+color:black;
+padding:1rem 2rem;
+border-radius:999px;
+text-decoration:none;
+font-weight:600;
+display:inline-block;
+transition:0.3s;
+}
 
-    .card-button:hover {
-      opacity: 0.8;
-    }
+.hero-button:hover{
+transform:translateY(-3px);
+}
 
-    .about {
-      padding: 6rem 8%;
-      background: white;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: center;
-    }
 
-    .about img {
-      width: 100%;
-      border-radius: 24px;
-      object-fit: cover;
-    }
+/* SKILLS */
 
-    .about h2 {
-      font-size: 3rem;
-      margin-bottom: 1.5rem;
-    }
+.products{
+padding:5rem 8%;
+}
 
-    .about p {
-      color: #555;
-      margin-bottom: 1rem;
-      font-size: 1.05rem;
-    }
+.section-title{
+font-size:2.5rem;
+margin-bottom:3rem;
+}
 
-    footer {
-      padding: 3rem;
-      text-align: center;
-      color: #777;
-    }
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:2rem;
+}
 
-    @media (max-width: 768px) {
-      h1 {
-        font-size: 2.8rem;
-      }
+.card{
+background:white;
+border-radius:24px;
+overflow:hidden;
+transition:0.3s;
+box-shadow:0 10px 30px rgba(0,0,0,0.05);
+}
 
-      .about {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
+.card:hover{
+transform:translateY(-6px);
+}
+
+.card img{
+width:100%;
+height:220px;
+object-fit:cover;
+}
+
+.card-content{
+padding:1.5rem;
+}
+
+.card h3{
+margin-bottom:0.7rem;
+font-size:1.3rem;
+}
+
+.card p{
+color:#666;
+margin-bottom:1rem;
+}
+
+.skill-tag{
+display:inline-block;
+background:#f1f1f1;
+padding:0.4rem 0.8rem;
+border-radius:999px;
+font-size:0.85rem;
+margin-bottom:1rem;
+}
+
+.card-button{
+display:inline-block;
+text-decoration:none;
+color:white;
+background:black;
+padding:0.8rem 1.2rem;
+border-radius:999px;
+font-size:0.9rem;
+}
+
+
+/* ABOUT */
+
+.about{
+padding:6rem 8%;
+background:white;
+
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:4rem;
+
+align-items:center;
+}
+
+.about img{
+width:100%;
+border-radius:24px;
+}
+
+.about h2{
+font-size:3rem;
+margin-bottom:1.5rem;
+}
+
+.about p{
+color:#555;
+margin-bottom:1rem;
+}
+
+
+/* FOOTER */
+
+footer{
+padding:3rem;
+text-align:center;
+color:#777;
+}
+
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.hero h1{
+font-size:2.7rem;
+}
+
+.subtitle{
+font-size:1rem;
+}
+
+.about{
+grid-template-columns:1fr;
+}
+
+}
+
+</style>
 </head>
+
 <body>
 
-  <header>
-    <div class="tag">NOW HIRING</div>
+<header class="hero">
 
-    <h1>Shop for New Talent</h1>
+<img src="banner.png"
+alt="Banner"
+class="hero-banner">
 
-    <p class="subtitle">
-      Explore creative skills, hands-on experience and modern digital thinking — all in one place.
-    </p>
+<div class="hero-overlay">
 
-    <a href="#skills" class="hero-button">Browse Skills</a>
-  </header>
+<div class="tag">
+NOW HIRING
+</div>
 
-  <section class="products" id="skills">
-    <h2 class="section-title">Featured Skills</h2>
+<h1>
+Shop for New Talent
+</h1>
 
-    <div class="grid">
+<p class="subtitle">
+Explore creative skills, hands-on experience and modern digital thinking — all in one place.
+</p>
 
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1492724441997-5dc865305da7?q=80&w=1200&auto=format&fit=crop" alt="Content Creation">
+<a href="#skills" class="hero-button">
+Browse Skills
+</a>
 
-        <div class="card-content">
-          <div class="skill-tag">Best Seller</div>
+</div>
 
-          <h3>Content Creation</h3>
+</header>
 
-          <p>
-            Creative storytelling, short-form content and engaging digital communication.
-          </p>
 
-          <a href="#" class="card-button">View Details</a>
-        </div>
-      </div>
+<section class="products" id="skills">
 
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1558655146-9f40138edfeb?q=80&w=1200&auto=format&fit=crop" alt="Design">
+<h2 class="section-title">
+Featured Skills
+</h2>
 
-        <div class="card-content">
-          <div class="skill-tag">In Demand</div>
+<div class="grid">
 
-          <h3>Design & Branding</h3>
+<div class="card">
 
-          <p>
-            Creating modern visuals, social media assets and clean digital aesthetics.
-          </p>
+<img src="https://images.unsplash.com/photo-1492724441997-5dc865305da7?q=80&w=1200&auto=format&fit=crop">
 
-          <a href="#" class="card-button">View Details</a>
-        </div>
-      </div>
+<div class="card-content">
 
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200&auto=format&fit=crop" alt="Social Media">
+<div class="skill-tag">
+Best Seller
+</div>
 
-        <div class="card-content">
-          <div class="skill-tag">Trending</div>
+<h3>Content Creation</h3>
 
-          <h3>Social Media</h3>
+<p>
+Creative storytelling and engaging communication.
+</p>
 
-          <p>
-            Strategy, platform understanding and audience-focused communication.
-          </p>
+<a href="#" class="card-button">
+View Details
+</a>
 
-          <a href="#" class="card-button">View Details</a>
-        </div>
-      </div>
+</div>
+</div>
 
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200&auto=format&fit=crop" alt="Teamwork">
 
-        <div class="card-content">
-          <div class="skill-tag">Top Rated</div>
+<div class="card">
 
-          <h3>Team Collaboration</h3>
+<img src="https://images.unsplash.com/photo-1558655146-9f40138edfeb?q=80&w=1200&auto=format&fit=crop">
 
-          <p>
-            Open communication, creative teamwork and organized project workflows.
-          </p>
+<div class="card-content">
 
-          <a href="#" class="card-button">View Details</a>
-        </div>
-      </div>
+<div class="skill-tag">
+In Demand
+</div>
 
-    </div>
-  </section>
+<h3>Design & Branding</h3>
 
-  <section class="about">
+<p>
+Creating modern visuals and digital aesthetics.
+</p>
 
-    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1200&auto=format&fit=crop" alt="About Me">
+<a href="#" class="card-button">
+View Details
+</a>
 
-    <div>
-      <h2>Behind the Shop</h2>
+</div>
+</div>
 
-      <p>
-        Hi, I'm [DEIN NAME]. I enjoy combining creativity, communication and digital ideas to create meaningful experiences.
-      </p>
 
-      <p>
-        Through different educational and practical experiences, I developed skills in content creation, branding, teamwork and digital communication.
-      </p>
+<div class="card">
 
-      <p>
-        I'm currently looking for opportunities where I can grow, contribute and bring fresh ideas into modern teams.
-      </p>
+<img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200&auto=format&fit=crop">
 
-      <a href="#" class="hero-button">Download CV</a>
-    </div>
+<div class="card-content">
 
-  </section>
+<div class="skill-tag">
+Trending
+</div>
 
-  <footer>
-    © 2026 Your Name — Shop for New Talent
-  </footer>
+<h3>Social Media</h3>
+
+<p>
+Audience-focused communication and strategy.
+</p>
+
+<a href="#" class="card-button">
+View Details
+</a>
+
+</div>
+</div>
+
+</div>
+
+</section>
+
+
+<section class="about">
+
+<img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1200&auto=format&fit=crop">
+
+<div>
+
+<h2>
+Behind the Shop
+</h2>
+
+<p>
+Hi, I'm [DEIN NAME].
+</p>
+
+<p>
+I enjoy combining creativity, communication and digital ideas.
+</p>
+
+<p>
+I’m currently looking for opportunities where I can grow and contribute.
+</p>
+
+<a href="#" class="hero-button">
+Download CV
+</a>
+
+</div>
+
+</section>
+
+
+<footer>
+
+© 2026 Your Name — Shop for New Talent
+
+</footer>
 
 </body>
 </html>
-```
